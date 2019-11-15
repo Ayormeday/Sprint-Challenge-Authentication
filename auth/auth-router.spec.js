@@ -23,21 +23,21 @@ describe("server", () => {
     });
   });
 
-//   describe("POST /api/auth/login", () => {
-//     it("should return 201 status and return the correct username for login", () => {
-//       return request(server)
-//         .post("/api/auth/login")
-//         .send({
-//           username: "ayormeday",
-//           password: "1234"
-//         })
-//         .set("Content-Type", "application/json")
-//         .then(res => {
-//           expect(res.status).toBe(201);
-//           expect(res.body.username).toBe("ayormeday");
-//         });
-//     });
-//   });
+  describe("POST /api/auth/login", () => {
+    it("should return 201 status and return the correct username for login", () => {
+      return request(server)
+        .post("/api/auth/login")
+        .send({
+          username: "ayormeday",
+          password: "1234"
+        })
+        .set("Content-Type", "application/json")
+        .then(res => {
+          expect(res.status).toBe(201);
+          expect(res.body.username).toBe("ayormeday");
+        });
+    });
+  });
 
   describe('POST /api/auth/login', () => {
       it('user cant login without credentials', () => {
