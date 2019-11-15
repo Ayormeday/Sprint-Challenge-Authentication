@@ -6,9 +6,7 @@ router.get("/", authenticate, validateUserId, (req, res) => {
   Users.getUsers({ username: req.loggedInUser.username })
     .then(users => {
       if (users) {
-        res
-          .status(200)
-          .json(users);
+        res.status(200).json(users);
       } else {
         res.json({
           message: "Access Denied!!!"
