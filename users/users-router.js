@@ -1,8 +1,8 @@
 const router = require("express").Router();
 const Users = require("./users-model.js");
-const restricted = require("../auth/authenticate-middleware");
+const authenticate = require("../auth/authenticate-middleware");
 
-router.get("/", restricted, validateUserId, (req, res) => {
+router.get("/", authenticate, validateUserId, (req, res) => {
   Users.getUsers({ username: req.loggedInUser.username })
     .then(users => {
       if (users) {
@@ -20,7 +20,7 @@ router.get("/", restricted, validateUserId, (req, res) => {
     });
 });
 
-router.get("/:id", restricted, validateUserId, (req, res) => {
+router.get("/:id", authenticate, validateUserId, (req, res) => {
   res.status(200).json(req.user);
 });
 

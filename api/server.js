@@ -10,6 +10,7 @@ const usersRouter = require('../users/users-router.js');
 const server = express();
 
 server.use(helmet());
+server.use(logger);
 server.use(cors());
 server.use(express.json());
 
@@ -20,6 +21,11 @@ server.use('/api/users', usersRouter);
 server.get('/', (req, res) => {
     res.send("Server sanity check");
   });
+
+function logger(req, res, next) {
+  console.log(req.method, req.url, Date.now())
+  next();
+}
   
 
 module.exports = server;
